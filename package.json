@@ -1,14 +1,24 @@
 {
   "scripts": {
+    "dev": "bankai index.js --debug -w true",
+    "start": "NODE_ENV=production bankai index.js",
     "scrape": "node scrape.js"
   },
   "dependencies": {
+    "choo": "^6.0.0",
+    "choo-log": "^7.2.1",
+    "firebase": "^4.3.0",
     "firebase-admin": "^5.2.1",
     "got": "^7.1.0",
+    "lodash.map": "^4.6.0",
     "pageres": "^4.5.1",
-    "sharp": "^0.18.2"
+    "sharp": "^0.18.2",
+    "sheetify": "^6.1.1",
+    "tachyons": "^4.8.1"
   },
   "devDependencies": {
+    "bankai": "^8.1.1",
+    "choo-reload": "^1.1.0",
     "dotenv": "^4.0.0"
   }
 }

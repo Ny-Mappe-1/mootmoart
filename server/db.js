@@ -1,5 +1,5 @@
 const firebase = require("firebase-admin");
-const serviceAccount = require("./certs/mootmoart-admin");
+const serviceAccount = require("../certs/mootmoart-admin");
 
 firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount),
