@@ -1,4 +1,6 @@
-const firebase = require("firebase");
+const firebase = require("firebase/app");
+require("firebase/database");
+require("firebase/storage");
 
 const config = {
   apiKey: "AIzaSyDEbHf1qtlD8AVG7VyfY1pth7uKIvVlTo4",
