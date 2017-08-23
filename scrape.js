@@ -5,18 +5,18 @@ if (dev) {
 
 const Pageres = require("pageres");
 const db = require("./server/db");
-const fs = require("fs");
-const got = require("got");
-const path = require("path");
 const sharp = require("sharp");
+const path = require("path");
+const got = require("got");
+const fs = require("fs");
 
 const dumpFilenameTmpl = "<%= date %> <%= time %> <%= url %>";
-const dest = path.join(__dirname, "tmp");
+const dest = path.join("/", "tmp");
 
 const bucket = db.storage().bucket();
 const dataRef = db.database().ref("data");
 
-async function main() {
+module.exports = async function main() {
   console.log("scraping");
   const [filename] = await scrape("eb.dk");
 
@@ -43,7 +43,7 @@ async function main() {
   );
 
   console.log("check");
-}
+};
 
 function uploadAndCreateFace(dumpKey) {
   return face => {
@@ -115,7 +115,3 @@ function detectFaces(filename) {
       return JSON.parse(res.body);
     });
 }
-
-main().then(() => {
-  process.exit();
-});
