@@ -2,6 +2,11 @@ const { CronJob } = require("cron");
 const scrape = require("./scrape");
 const fs = require("fs");
 
-const job = new CronJob("0 0 * * * *", scrape, null, false, "Europe/Copenhagen");
+const jobs = [
+  new CronJob("0 0 9 * * *", scrape, null, false, "Europe/Copenhagen"),
+  new CronJob("0 0 21 * * *", scrape, null, false, "Europe/Copenhagen")
+];
 
-job.start();
+jobs.forEach(job => {
+  job.start();
+});
