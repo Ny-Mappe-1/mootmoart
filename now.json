@@ -1,4 +1,5 @@
 {
+  "alias": "mootmoart",
   "env": { "NODE_ENV": "production" },
   "dotenv": true
 }
