@@ -19,7 +19,7 @@ const dataRef = db.database().ref("data");
 async function main() {
   console.log("scraping");
   const [filename] = await scrape("eb.dk");
-  console.log(filename)
+  console.log(filename);
 
   const converted = await convert(filename);
 
@@ -44,7 +44,7 @@ async function main() {
   );
 
   console.log("check");
-};
+}
 
 function uploadAndCreateFace(dumpKey) {
   return face => {
@@ -118,7 +118,9 @@ function detectFaces(filename) {
 }
 
 if (require.main === module) {
-  main().then(() => { console.log('done') })
+  main().then(() => {
+    console.log("done");
+  });
 } else {
-  module.exports = main
+  module.exports = main;
 }

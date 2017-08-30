@@ -26,7 +26,9 @@ module.exports = function mainView(state, emit) {
           return html`
             <a href='/dumps/${key}' class='db'>
               ${dump.timeCreated.split("T")[0]}<br>
-              <img src=${imageUrl || placeholder} class='w4 dib'>
+              <div class='w4 h4 overflow-hidden'>
+                <img src=${imageUrl || placeholder} class='w4 dib'>
+              </div>
             </a>
           `;
         })}

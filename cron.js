@@ -10,3 +10,5 @@ const jobs = [
 jobs.forEach(job => {
   job.start();
 });
+
+console.log("cron: Running");
