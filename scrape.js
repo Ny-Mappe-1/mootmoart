@@ -16,9 +16,10 @@ const dest = path.join("/", "tmp");
 const bucket = db.storage().bucket();
 const dataRef = db.database().ref("data");
 
-module.exports = async function main() {
+async function main() {
   console.log("scraping");
   const [filename] = await scrape("eb.dk");
+  console.log(filename)
 
   const converted = await convert(filename);
 
@@ -73,7 +74,7 @@ function extract(origFilename) {
 }
 
 function scrape(url) {
-  return new Pageres({ delay: 2, dumpFilenameTmpl })
+  return new Pageres({ delay: 2, filename: dumpFilenameTmpl })
     .src(url, ["940x1024"])
     .dest(dest)
     .run()
@@ -114,4 +115,10 @@ function detectFaces(filename) {
     .then(res => {
       return JSON.parse(res.body);
     });
+}
+
+if (require.main === module) {
+  main().then(() => { console.log('done') })
+} else {
+  module.exports = main
 }
