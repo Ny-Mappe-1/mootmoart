@@ -1,4 +1,4 @@
-const firebase = require("firebase/app");
+const app = require("firebase/app");
 require("firebase/database");
 require("firebase/storage");
 
@@ -11,6 +11,11 @@ const config = {
   messagingSenderId: "389015972874"
 };
 
-firebase.initializeApp(config);
+try {
+  app.initializeApp(config);
+} catch (e) {
+  console.log("Firebase already initialized");
+  console.error(e);
+}
 
-module.exports = firebase;
+export default app

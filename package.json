@@ -1,33 +1,30 @@
 {
   "private": true,
   "scripts": {
-    "build": "bankai build index.js dist/",
+    "build": "next build",
     "cron": "node cron.js",
-    "dev": "bankai index.js --debug -w true",
+    "dev": "node server.js",
     "scrape": "node scrape.js",
-    "serve": "serve dist",
+    "server": "node server.js",
     "start": "lil-pids services"
   },
   "dependencies": {
-    "bankai": "^8.1.1",
-    "choo": "^6.0.0",
-    "choo-log": "^7.2.1",
+    "body-parser": "^1.17.2",
+    "classnames": "^2.2.5",
     "cron": "^1.2.1",
+    "express": "^4.15.4",
     "firebase": "^4.3.0",
     "firebase-admin": "^5.2.1",
-    "got": "^7.1.0",
     "lil-pids": "^2.6.0",
     "lodash.map": "^4.6.0",
     "lodash.reduce": "^4.6.0",
-    "microcomponent": "^3.1.6",
+    "next": "^3.2.1",
     "pageres": "^4.5.1",
-    "serve": "^6.0.6",
-    "sharp": "^0.18.2",
-    "sheetify": "^6.1.1",
-    "tachyons": "^4.8.1"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "sharp": "^0.18.2"
   },
   "devDependencies": {
-    "choo-reload": "^1.1.0",
     "dotenv": "^4.0.0"
   }
 }

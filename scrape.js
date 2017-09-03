@@ -3,8 +3,8 @@ if (dev) {
   require("dotenv").load();
 }
 
+const firebase = require("./firebase.server");
 const Pageres = require("pageres");
-const db = require("./server/db");
 const sharp = require("sharp");
 const path = require("path");
 const got = require("got");
@@ -13,8 +13,8 @@ const fs = require("fs");
 const dumpFilenameTmpl = "<%= date %> <%= time %> <%= url %>";
 const dest = path.join("/", "tmp");
 
-const bucket = db.storage().bucket();
-const dataRef = db.database().ref("data");
+const bucket = firebase.storage().bucket();
+const dataRef = firebase.database().ref("data");
 
 async function main() {
   console.log("scraping");

@@ -1,2 +1,2 @@
-npm run serve
+npm run server
 npm run cron
