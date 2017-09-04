@@ -1,9 +1,18 @@
 import React, { Component } from "react";
+import each from "../lib/each";
 
 export default refsFn => Child => {
   return class WithSubs extends Component {
     static async getInitialProps({ req }) {
-      console.log(req.firebase)
+      let db
+
+      if (!req) {
+        const { default: fb } = await import("../firebase.client");
+        db = fb.database()
+      } else {
+        db = req.firebaseServer.database()
+      }
+
       const props = {};
 
       if (Child.getInitialProps) {
@@ -11,7 +20,7 @@ export default refsFn => Child => {
         Object.assign(props, childProps);
       }
 
-      const refs = refsFn(props, req.firebaseServer.database())
+      const refs = refsFn(props, db)
 
       await Promise.all(
         Object.keys(refs).map(key =>
@@ -26,11 +35,12 @@ export default refsFn => Child => {
 
     async componentDidMount() {
       const { default: fb } = await import("../firebase.client");
+      this.fb = fb
 
-      const refs = refsFn(this.props, fb.database())
+      this.refs = refsFn(this.props, fb.database())
 
-      Object.keys(refs).forEach(key => {
-        refs[key].on("value", snap => {
+      Object.keys(this.refs).forEach(key => {
+        this.refs[key].on("value", snap => {
           const collection = snap.val();
           const change = { [key]: collection };
           if (collection) this.setState(() => change);
@@ -38,10 +48,9 @@ export default refsFn => Child => {
       });
     }
 
-    componentWillDismount() {
-      console.log("dismount");
-      Object.keys(this.props.refs).forEach(key => {
-         fb.database().ref(this.props.refs[key]).off("value");
+    componentWillUnmount() {
+      Object.keys(this.refs).forEach((sub, key) => {
+         this.fb.database().ref(sub).off("value");
       });
     }
 

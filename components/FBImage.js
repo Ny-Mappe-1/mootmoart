@@ -4,7 +4,7 @@ export default class FBImage extends Component {
   state = { src: null };
 
   static defaultProps = {
-    placeholderSrc: "https://placehold.it/200x200"
+    placeholderSrc: "https://placehold.it/80x80/555/ccc&text=%E2%80%A6"
   };
 
   async componentDidMount() {

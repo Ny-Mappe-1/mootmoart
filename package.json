@@ -16,12 +16,14 @@
     "firebase": "^4.3.0",
     "firebase-admin": "^5.2.1",
     "lil-pids": "^2.6.0",
+    "lodash": "^4.17.4",
     "lodash.map": "^4.6.0",
     "lodash.reduce": "^4.6.0",
     "next": "^3.2.1",
     "pageres": "^4.5.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-modal": "^2.2.4",
     "sharp": "^0.18.2"
   },
   "devDependencies": {
