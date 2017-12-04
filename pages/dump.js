@@ -61,6 +61,7 @@ class Dump extends Component {
         <div className="flex flex-wrap">
           {map(faces, (face, key) =>
             <FBImage
+              key={key}
               ref={face.name}
               fbRef={`gs://${face.image.bucket}/${face.image.name}`}
               className="w3 h3 db fl"

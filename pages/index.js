@@ -17,8 +17,8 @@ const Index = ({ dumps }) => (
             <div key={key} className="ph2 mb3 w-50-ns ">
               <div className="bg-white shadow-1 br2 overflow-hidden tc flex-none">
                 <div className="w-100 h5 dib overflow-hidden">
-                  <Link>
-                    <a href={`/dumps/${key}`}>
+                  <Link href={`/dumps/${key}`}>
+                    <a>
                       <FBImage
                         fbRef={`gs://${dump.bucket}/${dump.name}`}
                         className="w-100 db"
